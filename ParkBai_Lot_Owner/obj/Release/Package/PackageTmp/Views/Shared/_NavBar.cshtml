@@ -1,0 +1,126 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" href="~/Content/ParkBai_Transparent_1.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="~/Content/ParkBai_Transparent_1.png" type="image/x-icon" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Scripts/CSS/Lot/Nav.css")
+    <script src="~/Scripts/jquery-3.7.1.min.js"></script>
+
+</head>
+<body>
+    <div class="area"></div><nav class="main-menu">
+        <ul>
+            <li>
+                <i class="fa  fa-2x"></i>
+                <span class="nav-text">
+                    <label class="navHead">OWNER DASHBOARD</label>
+                </span>
+            </li>
+
+
+            <li style="margin:20px 0px 20px 0px">
+
+            </li>
+            <li class="has-subnav">
+                <i class="fa fa-users fa-2x yellow "></i>
+                <span class="nav-text navLbl">
+                    LOT OWNER
+                </span>
+            </li>
+
+
+            <li class="has-subnav">
+                <a href="../Lot/ParkingLot">
+                    <i class="fa fa-map-marker fa-2x"></i>
+                    <span class="nav-text">
+                        Parking Lot
+                    </span>
+                </a>
+            </li>
+
+            <li class="has-subnav">
+                <a href="../Lot/RatingAndComments">
+                    <i class="fa fa-star fa-2x"></i>
+                    <span class="nav-text">
+                        Rating and Comments
+                    </span>
+                </a>
+            </li>
+
+            <li class="has-subnav">
+                <a href="../Lot/ParkingHistory">
+                    <i class="fa fa-history fa-2x"></i>
+                    <span class="nav-text">
+                        Parking History
+                    </span>
+                </a>
+            </li>
+
+            <li class="has-subnav">
+                <a href="../Lot/Analytics">
+                    <i class="fa fa-bar-chart  fa-2x"></i>
+                    <span class="nav-text">
+                        Analytics
+                    </span>
+                </a>
+            </li>
+
+
+
+            <li class="has-subnav">
+                <a href="../Lot/WithdrawRequest">
+                    <i class="fa fa-money  fa-2x"></i>
+                    <span class="nav-text">
+                        Withdraw
+                    </span>
+                </a>
+            </li>
+            <li style="margin:20px 0px 20px 0px">
+
+            </li>
+
+        </ul>
+
+        <ul class="logout">
+            <li class="has-subnav">
+                <a href="../Lot/Profile">
+                    <i class="fa fa-user-circle-o  fa-2x"></i>
+                    <span class="nav-text">
+                        Account
+                    </span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="#" id="logoutButton">
+                    <!-- Add id="logoutButton" here -->
+                    <i class="fa fa-power-off fa-2x yellow"></i>
+                    <span class="nav-text navLbl">
+                        LOGOUT
+                    </span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <div>
+        @RenderBody()
+    </div>
+    <script>
+        document.getElementById('logoutButton').addEventListener('click', function () {
+            if (confirm("Are You Sure?") == true) {
+                $.post("..//Home/LOGOUT", function (res) {
+                    console.log('filterPlate');
+                    if (res.success) {
+                        window.location.href = "../Home/LogIn";
+                        location.reload();
+                    } else {
+                    }
+                });
+            } else {
+            }
+        });
+    </script>
+</body>
+</html>

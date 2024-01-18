@@ -1,0 +1,62 @@
+﻿
+@{
+    ViewBag.Title = "Profile";
+    Layout = "~/Views/Shared/_NavBar.cshtml";
+    var uid = Session["UserId"];
+}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ParkBai - Profile</title>
+    <!-- Remove the integrity attribute -->
+    <link href="~/Scripts/CSS/Lot/Profile.css" rel="stylesheet" />
+
+    <script src="~/Scripts/jquery-3.7.1.min.js"></script>
+    <script type="module" src="~/Scripts/JS/Lot/Profile.js"></script>
+</head>
+<body>
+    <div class="sidebarfloat"></div>
+    <div class="left-div">
+
+        <img id="image-holder" src="" alt="Uploaded Image">
+        <input type="file" class="form-control mb-3" id="Ppic" name="" accept="image/*, .jpg, .png, .jpeg">
+        <button  id="Ppicupload">Update Picture</button> <br /><br /><br />
+        
+            <button  id="viewBusinessPermit">Business Permit</button>
+        
+            <button  id="viewLandTitle">Land Title</button>
+       
+    </div>
+    <div class="cardContainer">
+
+        <div class="rating-scorecard">
+            <div class="stars" id="stars"></div>
+            <div class="average-rating" id="average-rating">AVERAGE RATING: <span id="average-value" class="spanlbl">0</span></div>
+        </div>
+        <br /><br />
+        <div class="profile-details">
+            <p>COMPANY NAME: </p><span id="Comp_name" class="spanlbl">Loading...</span><br />
+            <p>EMAIL: </p><span id="Email" class="spanlbl">Loading...</span><br />
+            <p>NAME: </p><span id="Name" class="spanlbl">Loading...</span><br />
+            <p>ADDRESS: </p><span id="Address" class="spanlbl">Loading...</span><br />
+            <p>PHONE NUMBER:</p> <span id="Phone" class="spanlbl">Loading...</span><br />
+            <br /><br /><br />
+            <p>TOTAL INCOME: </p><span id="totalIncome" class="spanlbl">Loading...</span><br />
+            <p>CURRENT BALANCE: </p><span id="currentBalance" class="spanlbl">Loading...</span><br />
+
+        </div>
+
+    </div>
+
+
+
+    <script>
+        var uid = @Html.Raw(Json.Encode(uid));
+    </script>
+</body>
+</html>
+

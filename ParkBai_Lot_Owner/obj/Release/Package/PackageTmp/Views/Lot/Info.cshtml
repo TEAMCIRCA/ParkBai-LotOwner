@@ -1,0 +1,83 @@
+﻿
+@{
+    ViewBag.Title = "Info";
+    Layout = "~/Views/Shared/_NavBar.cshtml";
+    var uid = Session["UserId"];
+}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ParkBai - Driver Information</title>
+    <link href="~/Scripts/CSS/Lot/Info.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.7.1.min.js"></script>
+    <script type="module" src="~/Scripts/JS/Lot/Info.js"></script>
+</head>
+<body>
+    <div class="sidebarfloat">
+    </div>
+    <div class="centerdiv">
+        <h1>DRIVER INFORMATION</h1>
+        <div id="container">
+            <div id="driver">
+                <div id="driverheader">
+                    <img id="imageElement" alt="Driver Image">
+                </div>
+
+                <div class="label-container">
+                    <label id="TimeIn">TIME IN:</label>
+                    <label id="Time_In" class="lblyellow" >Loading...</label>
+                </div>
+
+                <div class="label-container">
+                    <label id="TimeOut">TIME OUT:</label>
+                    <label id="Time_Out" class="lblyellow">Loading...</label>
+                </div>
+
+                <div class="label-container">
+                    <label id="Parking ID">PARKING ID: </label>
+                    <label id="db_park_id" class="lblyellow">Loading...</label>
+                </div>
+
+                <div class="label-container">
+                    <label id="Driver Name">DRIVER NAME: </label>
+                    <label id="driver_name" class="lblyellow">Loading...</label>
+                </div>
+            </div>
+
+            <div id="vehicle">
+                <div id="vehicleheader">
+                    <img id="imageElement2" alt="Vehicle Image">
+                </div>
+
+                <div class="label-container">
+                    <label id="Plate_Number">PLATE NUMBER: </label>
+                    <label id="plate_number" class="lblyellow">Loading...</label>
+                </div>
+
+                <div class="label-container">
+                    <label id="Vehicle_Type">VEHICLE TYPE: </label>
+                    <label id="vehicle_type" class="lblyellow">Loading...</label>
+                </div>
+
+                <div class="label-container">
+                    <label id="Vehicle_Color">VEHICLE COLOR: </label>
+                    <label id="vehicle_color" class="lblyellow">Loading...</label>
+                </div>
+
+                <div class="label-container">
+                    <label id="Vehicle_Brand">VEHICLE BRAND: </label>
+                    <label id="vehicle_brand" class="lblyellow">Loading...</label>
+                </div>
+            </div>
+        </div>
+        <button id="backButton">GO BACK</button>
+    </div>
+    <script>
+        var uid = @Html.Raw(Json.Encode(uid));
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,296 @@
+﻿body {
+    /*font-family: 'Montserrat', sans-serif;
+    background: #003459;*/
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 90%;
+    float: right;
+}
+
+.withdrawal-list {
+    list-style: none;
+    padding: 0;
+}
+
+.withdrawal-item {
+    margin-bottom: 20px;
+}
+
+.withdrawal-card {
+    background-color: #003459;
+    border: 1px solid #e2c946;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    transition: transform 0.3s;
+    color:white;
+}
+
+.account-info {
+    margin: 0;
+    font-size: 16px;
+    color: white;
+}
+
+.withdrawal-card:hover {
+    transform: translateY(-5px);
+}
+
+/*.cancel-btn {
+    background-color: #e74c3c;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+    .cancel-btn:hover {
+        background-color: #c0392b;
+    }
+*/
+    
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.card {
+    max-width: 400px;
+    width: 100%;
+    background-color: #003459;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 7px 7px 14px #001a2d, -7px -7px 14px #004e86;
+    margin-left: 50px;
+    height: 500px;
+    color: white;
+    text-align: center;
+}
+
+.balbox {
+    font-family:'Century Gothic';
+    font-weight:bold;
+    height: 50px;
+    pointer-events: none;
+    border-radius: 10px;
+    background: #003459;
+    box-shadow: inset 8px 8px 16px #002138, inset -8px -8px 16px #00477a;
+    border-color: transparent;
+    font-size: 25px;
+    color: #e2c946;
+    text-align: center;
+    margin-top: 20px;
+
+}
+.reqbox {
+    height: 50px;
+    border-radius: 10px;
+    background: #003459;
+    box-shadow: inset 8px 8px 16px #002138, inset -8px -8px 16px #00477a;
+    border: 1px solid transparent;
+    font-size: 25px;
+    color: #e2c946;
+    text-align: center;
+    margin-top: 20px;
+}
+    .reqbox:focus {
+        border-color: transparent;
+    }
+
+
+.lbl {
+   
+    margin:0px;
+    color: #e2c946;
+    font-size: 16px;
+    letter-spacing:2px;
+}
+
+input, select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    border: 2px solid #00171F;
+    border-radius: 8px;
+    font-size: 16px;
+    color: #333;
+    background-color: #f8f8f8;
+    transition: border-color 0.3s;
+}
+
+    input:focus, select:focus {
+        border-color: #E2C946;
+    }
+
+    input[type="button"] {
+        background-color: #003459;
+        border-color: transparent;
+        border-radius: 8px;
+        box-shadow: 3px 3px 0px #001524, -3px -3px 0px #00538e;
+        box-sizing: border-box;
+        color: #e4f4ff;
+        cursor: pointer;
+        display: inline-block;
+        font-size: 18px;
+        line-height: 29px;
+        padding: 0 10px 0 11px;
+        position: relative;
+        text-align: center;
+        letter-spacing: 2px;
+        height:50px;
+        font-weight:500;
+    }
+
+        input[type="button"]:hover {
+            color: #e2c946;
+            box-shadow: inset 3px 3px 0px #001524, inset -3px -3px 0px #00538e;
+        }
+
+button {
+    background-color: #003459;
+    border-color: transparent;
+    border-radius: 8px;
+    box-shadow: 3px 3px 0px #001524, -3px -3px 0px #00538e;
+    box-sizing: border-box;
+    color: #e4f4ff;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 18px;
+    line-height: 29px;
+    padding: 0 10px 0 11px;
+    position: relative;
+    text-align: center;
+    letter-spacing: 2px;
+    height: 50px;
+    font-weight: 500;
+}
+    button:hover {
+        color: #e2c946;
+        box-shadow: inset 3px 3px 0px #001524, inset -3px -3px 0px #00538e;
+    }
+
+.btnHist {
+ margin-top:30px;
+    background-color: #003459;
+    border-color: transparent;
+    border-radius: 8px;
+    box-shadow: 3px 3px 0px #001524, -3px -3px 0px #00538e;
+    box-sizing: border-box;
+    color: #e4f4ff;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 18px;
+    line-height: 29px;
+    padding: 0 10px 0 11px;
+    position: relative;
+    text-align: center;
+    letter-spacing: 2px;
+    height: 50px;
+    font-weight: 500;
+}
+
+btnHist:hover {
+    color: #e2c946;
+    box-shadow: inset 3px 3px 0px #001524, inset -3px -3px 0px #00538e;
+}
+    
+
+
+.card select {
+    width: 100%;
+    padding: 12px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    color: #333;
+    background-color: #f8f8f8;
+    margin-bottom: 20px;
+}
+
+.withdrawal-card.cancelled {
+    box-shadow: 0 0 10px rgba(231, 76, 60, 0.8);
+}
+
+.withdrawal-card.released {
+    box-shadow: 0 0 10px rgba(46, 204, 113, 0.8);
+}
+
+.pagination {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+    .pagination button {
+        background: linear-gradient(to right, #E2C946, #003459);
+        color: #fff;
+        cursor: pointer;
+        border: none;
+        border-radius: 8px;
+        padding: 10px;
+        font-size: 16px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        transition: background 0.3s;
+    }
+
+        .pagination button:hover {
+            background: linear-gradient(to right, #003459, #E2C946);
+        }
+
+.popup {
+    width: 400px;
+    background-color: #e4f4ff;
+    border-radius: 6px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%,-50%) scale(0.1);
+    text-align: center;
+    padding: 0 30px 30px;
+    color: #003459;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+    visibility: hidden;
+    transition: transform 0.4s, top 0.4s;
+}
+
+.open-popup {
+    visibility: visible;
+    top: 50%;
+    transform: translate(-50%,-50%) scale(1);
+}
+
+.popup img {
+    width: 100px;
+    margin-top: -50px;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+}
+
+.popup h2 {
+    font-size: 38px;
+    font-weight: 600;
+    margin: 30px 0 10px;
+}
+
+.popup button {
+    width: 100%;
+    margin-top: 50px;
+    padding: 10px 0;
+    background-color: #003459;
+    color: white;
+    border: 0;
+    outline: none;
+    font-size: 18px;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 0 5px 5px rgba(0,0,0,0.5);
+}

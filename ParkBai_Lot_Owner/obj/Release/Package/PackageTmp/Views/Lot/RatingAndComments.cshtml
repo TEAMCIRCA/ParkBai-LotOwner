@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = "RatingAndComments";
+    Layout = "~/Views/Shared/_NavBar.cshtml";
+    var uid = Session["UserId"];
+}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ParkBai - Parking History</title>
+    <link href="~/Scripts/CSS/Lot/RatingAndComments.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.7.1.min.js"></script>
+    <script type="module" src="~/Scripts/JS/Lot/RatingAndComments.js"></script>
+</head>
+<body>
+    <div class="container">
+        <center>
+            <h1>Rating and Comments</h1>
+            <button class="filterBtn" data-rating="5">5 Ratings</button>
+            <button class="filterBtn" data-rating="4">4 Ratings</button>
+            <button class="filterBtn" data-rating="3">3 Ratings</button>
+            <button class="filterBtn" data-rating="2">2 Ratings</button>
+            <button class="filterBtn" data-rating="1">1 Ratings</button>
+            <button class="resetButton">Reset</button>
+            <table id="rating" class="parking-table">
+                <thead>
+                    <tr>
+                        <th>Rating</th>
+                        <th>Comment</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+
+            <div id="pagination" class="pagination-container">
+                <button id="prevPage">Previous Page</button>
+                <button id="nextPage">Next Page</button>
+            </div>
+        </center>
+    </div>
+    <script>
+        var uid = @Html.Raw(Json.Encode(uid));
+    </script>
+</body>
+</html>
+
+

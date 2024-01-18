@@ -1,0 +1,68 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ParkBai - LogIn</title>
+    <link rel="icon" href="~/Content/ParkBai_Transparent_1.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="~/Content/ParkBai_Transparent_1.png" type="image/x-icon" />
+    <link href="~/Scripts/CSS/Home/LogIn.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.7.1.min.js"></script>
+    <script type="module" src="~/Scripts/JS/Home/LogIn.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="left-div">
+            <input type="image" class="imageLogo" id="ParkBaiLogo" title="ParkBai Logo" src="" loading="lazy" />
+        </div>
+
+        <div class="right-div">
+            <div class="logDeets">
+                <div class="header">
+                    LOG IN
+                </div>
+                <br />
+                <br />
+                <form action="#" method="POST">
+                    <div class="textbox-container">
+                        <div class="normal">USERNAME</div>
+                        <input type="text" id="username" name="username" class="txtbox" required>
+                    </div>
+                    <br /><br />
+                          <div class="textbox-container">
+                              <div class="normal">PASSWORD</div>
+                              <i class=" bi bi-eye-slash" id="togglePassword"></i>
+                              <input type="password" id="password" name="password" class="txtbox" required>
+                          </div>
+                    
+                    <button type="submit" class="submit loginbutton">Login</button>
+                </form>
+                <div id="divLoginError" style="display: none;">
+                    <p id="lblLoginErrorMessage"></p>
+                </div>
+                <br />
+                    <div class="Linkbutton">
+                        <a href="/Home/PreReg">Not Yet Registered?</a>
+                    </div>
+               
+            </div>
+        </div>
+    </div>
+    <div class="popup" id="popupWrong">
+        <img id="popWrong" src="" loading="lazy" />
+        <h2>Sorry!</h2>
+        <p>Invalid Credentials Entered.</p>
+        <button type="button" id="popClose">OK</button>
+    </div>
+    <script>
+        history.pushState(null, null, location.href);
+        window.onpopstate = function () {
+            history.go(1);
+        };
+    </script>
+</body>
+</html>

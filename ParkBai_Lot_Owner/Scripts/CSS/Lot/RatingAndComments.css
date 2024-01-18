@@ -1,0 +1,139 @@
+﻿.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 10px 50px 50px 50px;
+    box-shadow: inset 7px 7px 14px #001a2d, inset -7px -7px 14px #004e86;
+    border-radius: 5px;
+}
+
+.search-container {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+
+label {
+    margin-right: 10px;
+}
+
+input[type="text"],
+input[type="date"],
+button {
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid #5aa7cd;
+    border-radius: 5px;
+    color: #003459;
+}
+
+input[type="text"],
+input[type="date"] {
+    box-sizing: border-box;
+    background-color: #003459;
+    box-shadow: inset 5px 5px 2px #00253f, inset -5px -5px 2px #004373;
+    border-color: transparent;
+    margin-top: 15px;
+    border-radius: 5px;
+    height: 40px;
+    width: 250px;
+    font-size: 16px;
+    padding: 15px;
+    color: white;
+    outline: none;
+}
+
+
+button {
+    background-color: #003459;
+    border-color: transparent;
+    border-radius: 8px;
+    box-shadow: 3px 3px 0px #001524, -3px -3px 0px #00538e;
+    box-sizing: border-box;
+    color: #e4f4ff;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 13px;
+    line-height: 29px;
+    padding: 0 10px 0 11px;
+    position: relative;
+    text-align: center;
+    width: 100px;
+    letter-spacing: 2px;
+}
+
+    button:hover {
+        color: #e2c946;
+        box-shadow: inset 3px 3px 0px #001524, inset -3px -3px 0px #00538e;
+    }
+
+    button:disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
+    }
+
+table {
+    margin-top: 20px;
+    width: 100%;
+    table-layout: fixed;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    text-align:center;
+}
+
+table, th, tr {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+
+tr:nth-child(even) {
+    background-color: white;
+}
+    tr:nth-child(odd) {
+        background-color: #FDFD96;
+    } 
+
+th {
+    padding: 10px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 16px;
+    background-color: #266089;
+    letter-spacing: 5px;
+}
+
+td {
+    font-size: 18px;
+    padding: 10px;
+    font-weight: 400;
+    text-transform: uppercase;
+    color: black;
+    font-weight: 500;
+}
+
+#pagination-container {
+    display: inline-block;
+    text-align: center;
+    font-size: 18px;
+    border: 1px solid #ddd;
+    background-color: aliceblue;
+    margin-top: 15px;
+}
+
+.pagination-button {
+    display: inline-block;
+    padding: 8px 12px;
+    margin: 4px;
+    cursor: pointer;
+    background-color: skyblue;
+    color: black;
+}
+
+    .pagination-button:hover {
+        background-color: yellow;
+    }
+
+.active {
+    background-color: midnightblue;
+    color: white;
+    font-weight:500;
+}

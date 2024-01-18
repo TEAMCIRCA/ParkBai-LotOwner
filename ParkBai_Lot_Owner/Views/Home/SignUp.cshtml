@@ -1,0 +1,201 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <title>ParkBai - Sign Up</title>
+    <link rel="icon" href="~/Content/ParkBai_Transparent_1.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="~/Content/ParkBai_Transparent_1.png" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/Scripts/CSS/Home/SignUp.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1 class="name">PARKBAI</h1>
+        <p class="sub">PARKING MANAGEMENT SYSTEM</p>
+    </header>
+
+    <div class="center">
+        <div class="container">
+            <div class="title">REGISTRATION</div>
+            <div class="content">
+                <form id="form" method="post" action="">
+                    <div class="user-details">
+                        <div class="input-box">
+                            <span class="details">First Name</span>
+                            <input type="text" name="fname" class="page-style" placeholder="Enter your first name" id="fname" autocomplete="off" required>
+                        </div>
+                        <div class="input-box">
+                            <span class="details">Middle Name</span>
+                            <input type="text" name="mname" class="page-style" placeholder="Enter your middle name" id="mname" autocomplete="off" required>
+                        </div>
+                        <div class="input-box">
+                            <span class="details">Last Name</span>
+                            <input type="text" name="lname" class="page-style" placeholder="Enter your last name" id="lname" autocomplete="off" required>
+                        </div>
+                        <div class="input-box">
+                            <span class="details">Email</span>
+                            <span id="emailContainer"></span>
+                        </div>
+                        <div class="input-box">
+                            <span class="details">Phone Number</span>
+                            <input type="text" name="phone" class="page-style" placeholder="Enter your phone number" id="phone" autocomplete="off" required>
+                        </div>
+                        <div class="input-box">
+                            <span class="details">Name of Company/Parking Lot</span>
+                            <input type="text" name="comp" class="page-style" placeholder="" id="comp" autocomplete="off" required>
+                        </div>
+                        <div class="input-box">
+                            <span class="details">Password</span>
+                            <input type="password" name="pass" class="page-style" placeholder="" id="pass" autocomplete="off" required>
+                        </div>
+                        <div class="input-box">
+                            <span class="details">Confirm Password</span>
+                            <input type="password" name="cpass" class="page-style" placeholder="" id="cpass" autocomplete="off" required>
+                        </div>
+                        <div class="input-box">
+                            <span class="details">Parking Lot Address</span>
+                            <input type="text" name="address" class="page-style" placeholder="" id="address" required>
+                        </div>
+                    </div>
+
+                    <div class="button">
+                        <input class="submit" id="submit" type="button" value="Submit" />
+                    </div>
+
+                    <center>
+                        <div class="Linkbutton">
+                            <a href="/Home/LogIn">Already Registered?</a>
+                        </div>
+                    </center>
+                </form>
+            </div>
+        </div>
+
+        <div class="map-container">
+            <div class="map" id="map"></div>
+        </div>
+    </div>
+    <div class="popup" id="popupCheck">
+        <img id="popCheck" src="" loading="lazy" />
+        <h2>Congratulations!</h2>
+        <p>Account Created! Welcome to ParkBai.</p>
+        <button type="button" id="popCloseSuccess">OK</button>
+    </div>
+    <div class="popup" id="popupWrong">
+        <img id="popWrong" src="" loading="lazy" />
+        <h2>Sorry!</h2>
+        <p id="popMess" value=""></p>
+        <button type="button" id="popClose">OK</button>
+    </div>
+    <script>
+        let selectedLat = null;
+        let selectedLng = null;
+        function createMap() {
+            var options = {
+                center: { lat: 10.296554316213339, lng: 123.90573961089021 },
+                zoom: 6
+            };
+            var map = new google.maps.Map(document.getElementById('map'), options);
+
+            const input = document.getElementById("address");
+            const searchBox = new google.maps.places.SearchBox(input);
+            let marker = null;
+
+            function updateSearchBoxInput(lat, lng) {
+                const geocoder = new google.maps.Geocoder();
+                const latLng = new google.maps.LatLng(lat, lng);
+
+                geocoder.geocode({ location: latLng }, (results, status) => {
+                    if (status === "OK" && results[0]) {
+                        input.value = results[0].formatted_address;
+                    } else {
+                        console.error("Geocode was not successful for the following reason:", status);
+                    }
+                });
+            }
+
+            searchBox.addListener("places_changed", () => {
+                const places = searchBox.getPlaces();
+                console.log("Places:", places);
+                if (places.length == 0) {
+                    return;
+                }
+
+                if (marker) {
+                    marker.setMap(null);
+                }
+
+                const bounds = new google.maps.LatLngBounds();
+
+                places.forEach((place) => {
+                    if (!place.geometry || !place.geometry.location) {
+                        console.log("Returned place contains no geometry");
+                        return;
+                    }
+                    console.log("Place Geometry Location:", place.geometry.location);
+
+                    const icon = {
+                        url: place.icon,
+                        size: new google.maps.Size(71, 71),
+                        origin: new google.maps.Point(0, 0),
+                        anchor: new google.maps.Point(17, 34),
+                        scaledSize: new google.maps.Size(25, 25),
+                    };
+
+                    marker = new google.maps.Marker({
+                        map,
+                        title: place.name,
+                        position: place.geometry.location,
+                    });
+
+                    selectedLat = place.geometry.location.lat();
+                    selectedLng = place.geometry.location.lng();
+                    updateSearchBoxInput(selectedLat, selectedLng);
+
+                    if (place.geometry.viewport) {
+                        bounds.union(place.geometry.viewport);
+                    } else {
+                        bounds.extend(place.geometry.location);
+                    }
+                });
+                map.fitBounds(bounds);
+            });
+
+            map.addListener('click', (event) => {
+                const clickedLat = event.latLng.lat();
+                const clickedLng = event.latLng.lng();
+                console.log("Clicked Latitude:", clickedLat);
+                console.log("Clicked Longitude:", clickedLng);
+
+                if (marker) {
+                    marker.setPosition({ lat: clickedLat, lng: clickedLng });
+                    selectedLat = clickedLat;
+                    selectedLng = clickedLng;
+                } else {
+                    marker = new google.maps.Marker({
+                        map,
+                        position: { lat: clickedLat, lng: clickedLng },
+                        draggable: true,
+                    });
+                    selectedLat = clickedLat;
+                    selectedLng = clickedLng;
+                }
+                updateSearchBoxInput(selectedLat, selectedLng);
+            });
+        }
+        document.addEventListener("DOMContentLoaded", createMap);
+    </script>
+    <script>
+        var decryptedEmail = "@ViewBag.DecryptedEmail";
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBT7H60imBZ02pLZtN_Df1BrGNAPP5xYoE&callback=createMap&libraries=places&v=weekly"></script>
+    <script type="module" src="~/Scripts/JS/Home/SignUp.js"></script>
+</body>
+</html>
+
+

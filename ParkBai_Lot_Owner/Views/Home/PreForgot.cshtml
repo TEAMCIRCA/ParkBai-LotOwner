@@ -1,0 +1,65 @@
+﻿
+@{
+    ViewBag.Title = "PreForgot";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ParkBai - Pre-Registration</title>
+    <link rel="icon" href="~/Content/ParkBai_Transparent_1.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="~/Content/ParkBai_Transparent_1.png" type="image/x-icon" />
+    <link href="~/Scripts/CSS/Home/PreReg.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.7.1.min.js"></script>
+    <script type="module" src="~/Scripts/JS/Home/PreForgot.js"></script>
+</head>
+<body>
+
+    <div class="container">
+        <div class="left-div">
+            <input type="image" class="imageLogo" id="ParkBaiLogo" title="ParkBai Logo" src="" loading="lazy" />
+        </div>
+        <div class="right-div">
+            <div class="logDeets">
+                <div class="header">ENTER EMAIL</div>
+                <br /><br />
+
+                <form id="form" method="post" action="">
+                    <div class="textbox-container">
+                        <div class="normal">EMAIL</div>
+                        <input type="email" id="email" name="email" class="txtbox" required>
+                    </div>
+                </form>
+
+                <input type="submit" id="submit" class="loginbutton" value="SUBMIT" />
+                <br />  <br />
+                <div class="Linkbutton">
+                    <a href="/Home/LogIn">BACK</a>
+                </div>
+            </div>
+        </div>
+        <div class="popup" id="popupCheck">
+            <img id="popCheck" src="" loading="lazy" />
+            <h2>Thank You!</h2>
+            <p>Please Check your Email.</p>
+            <button type="button" id="popCloseSuccess">OK</button>
+        </div>
+        <div class="popup" id="popupWrong">
+            <img id="popWrong" src="" loading="lazy" />
+            <h2>Sorry!</h2>
+            <p id="popMess" value=""></p>
+            <button type="button" id="popClose">OK</button>
+        </div>
+    </div>
+
+    <script>
+        history.pushState(null, null, location.href);
+        window.onpopstate = function () {
+            history.go(1);
+        };
+    </script>
+</body>
+</html>

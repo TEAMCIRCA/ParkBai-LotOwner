@@ -1,0 +1,78 @@
+﻿
+@{
+    ViewBag.Title = "Analytics";
+    Layout = "~/Views/Shared/_NavBar.cshtml";
+    var uid = Session["UserId"];
+}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ParkBai - Analytics</title>
+    <!-- Remove the integrity attribute -->
+    <link href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <!-- Include jsPDF library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+
+    <!-- Include jsPDF-AutoTable plugin -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.17/jspdf.plugin.autotable.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script type="module" src="~/Scripts/JS/Lot/Analytics.js"></script>
+    <link href="~/Scripts/CSS/Lot/Analytics.css" rel="stylesheet" />
+
+</head>
+
+<body>
+    <div class="sidebarfloat"></div>
+    <div class="centerview">
+        <center><h1>PARKING ANALYTICS</h1> </center>
+        @*<div class="button-container">*@
+        <button id="btnLastWeek" class="btnDIY">Past Week</button>
+        <button id="btnLastMonth" class="btnDIY">Past Month</button>
+        <button id="btnLastYear" class="btnDIY">Past Year</button>
+        <input type="text" class="form-control" id="datePicker" name="datefilter" value="Select Date Range" />
+        <button id="btnAllData" class="btnDIY">Reset</button>
+        <button class="btnDIY" id="btnDownloadCSV">Download CSV</button>
+        <button class="btnDIY" id="btnDownloadPDF">Download PDF</button>
+        @*</div>*@
+    </div>
+    <div class="data">
+        <div class="leftGraph">
+            <center>
+                <div class="chart-container">
+                    <div class="table-container">
+                        <table class="tableGraph" id="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Income</th>
+                                    <th>Visits</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                        <div id="pagination-container"></div>
+                    </div>
+                </div>
+            </center>
+        </div>
+        <div class="rightData">
+            <div class="chart">
+
+                <canvas id="incomeChart" style="background-color: #e4f4ff; "></canvas>
+            </div>
+        </div>
+    </div>
+    <script>
+        var uid = @Html.Raw(Json.Encode(uid));
+    </script>
+</body>
+</html>
+
+
+

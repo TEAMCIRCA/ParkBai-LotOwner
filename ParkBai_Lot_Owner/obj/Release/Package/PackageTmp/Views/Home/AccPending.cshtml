@@ -1,0 +1,48 @@
+﻿@{
+    Layout = null;
+    var uid = Session["UserId"];
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ParkBai</title>
+    <link rel="icon" href="~/Content/ParkBai_Transparent_1.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="~/Content/ParkBai_Transparent_1.png" type="image/x-icon" />
+    <link href="~/Scripts/CSS/Home/AccPending.css" rel="stylesheet" />
+    <script src="/Scripts/jquery-3.7.1.min.js"></script>
+
+</head>
+<body>
+    <div class="container">
+        <img id="iconPB" src="" loading="lazy" />
+        <h1>ACCOUNT PENDING IS FOR APPROVAL</h1>
+        <p>Upload the required documents and expect us to contact soon.</p>
+
+        <div class="input-box">
+            <span class="details">BUSINESS PERMIT</span>
+            <input type="file" class="businessPermit" id="businessPermit" name="chooseFile" accept="image/*, .pdf, .jpg, .png, .jpeg">
+            <input class="submitBusinessPermit" id="submitBusinessPermit" type="button" value="SUBMIT" />
+            <button id="viewBusinessPermit" style="display: none;">View Business Permit</button>
+        </div>
+
+        <div class="input-box">
+            <span class="details">LAND TITLE</span>
+            <input type="file" class="LandTitle" id="LandTitle" name="chooseFile" accept="image/*, .pdf, .jpg, .png, .jpeg">
+            <input class="submitLandTitle" id="submitLandTitle" type="button" value="SUBMIT" />
+            <button id="viewLandTitle" style="display: none;">View Land Title</button>
+        </div>
+
+        <div class="input-box">
+            <input class="LogOut" id="LogOut" type="button" value="LOG OUT" />
+        </div>
+
+        <script>
+        var uid = @Html.Raw(Json.Encode(uid));
+        </script>
+        <script type="module" src="~/Scripts/JS/Home/AccPending.js"></script>
+    </div>
+</body>
+</html>

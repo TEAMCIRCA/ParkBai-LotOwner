@@ -1,0 +1,87 @@
+﻿table {
+    margin-top: 20px;
+    width: 100%;
+    table-layout: fixed;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+table, th, tr {
+    border: 1px solid #266089;
+    border-collapse: collapse;
+}
+
+th {
+    padding: 10px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 16px;
+    background-color: #266089;
+    letter-spacing: 5px;
+    
+}
+
+td {
+    font-size: 18px;
+    padding: 10px;
+    font-weight: 400;
+    text-transform: uppercase;
+    white-space: nowrap;
+    overflow: hidden; 
+    text-overflow: ellipsis;
+}
+
+.pagination-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /*position: absolute;
+    bottom: 0;
+    transform: translateX(70%);
+    padding: 10px;*/
+}
+
+    .pagination-container button {
+        /*padding: 10px;
+        margin: 5px;
+        background-color: #5aa7cd;
+        color: #fff;
+        border: none;
+        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);*/
+        background-color: #003459;
+        border-color: transparent;
+        border-radius: 8px;
+        box-shadow: 5px 5px 2px #00253f, -5px -5px 2px #004373;
+        box-sizing: border-box;
+        color: #e4f4ff;
+        cursor: pointer;
+        display: inline-block;
+        font-size: 13px;
+        line-height: 29px;
+        padding: 0 10px 0 11px;
+        position: relative;
+        text-align: center;
+        text-decoration: none;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+        vertical-align: middle;
+        width: 150px;
+        letter-spacing: 2px;
+        margin: 5px;
+        height: 30px;
+    }
+
+        .pagination-container button:hover {
+            color: #e2c946;
+        }
+
+        .pagination-container button:active {
+            box-shadow: inset 5px 5px 2px #00253f, inset -5px -5px 2px #004373;
+        }
+
+        .pagination-container button:disabled {
+            box-shadow: inset 5px 5px 2px #00253f, inset -5px -5px 2px #004373;
+            cursor: not-allowed;
+        }

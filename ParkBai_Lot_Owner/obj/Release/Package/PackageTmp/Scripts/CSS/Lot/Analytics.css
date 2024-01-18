@@ -1,0 +1,158 @@
+﻿/*body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 20px;
+}*/
+.centerview {
+    width: 80%;
+    float: left;
+    /*align-content: center;*/
+    text-align: center;
+    /*justify-content: center;*/
+    height: 200px;
+    /*border: 1px solid red;*/
+}
+
+.leftGraph {
+    width: 25%;
+    float: left;
+    height: 95%;
+    margin-right: 5px;
+  /*  border: 1px solid green;*/
+}
+.rightData {
+    width: 53%;
+    float: right;
+    height: 95%;
+    padding: 0px 10px 0px 10px;
+/*    border: 1px solid red;
+*/    margin-right: 15px;
+}
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    padding: 20px;
+    transition: transform 0.3s;
+    box-sizing: border-box;
+}
+
+    .card:hover {
+        transform: translateY(-5px);
+    }
+
+
+.chart-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    padding: 20px;
+    transition: transform 0.3s;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#incomeChart {
+    width: 800px; /* Set your desired width */
+    height: 200px; /* Set your desired height */
+}
+
+.chart canvas {
+    width: 100%;
+    
+}
+
+
+.btnDIY {
+    background-color: #003459;
+    border-color: transparent;
+    border-radius: 8px;
+    box-shadow: 3px 3px 0px #001524, -3px -3px 0px #00538e;
+    box-sizing: border-box;
+    color: #e4f4ff;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 13px;
+    line-height: 29px;
+    padding: 0 10px 0 11px;
+    position: relative;
+    text-align: center;
+    width: 150px;
+    letter-spacing: 2px;
+    margin:20px 10px 10px 10px;
+}
+
+    .btnDIY:hover {
+        color: #e2c946;
+        box-shadow: inset 3px 3px 0px #001524, inset -3px -3px 0px #00538e;
+    }
+
+    .btnDIY:disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
+    }
+input[type="text"]{
+    box-sizing: border-box;
+    background-color: #003459;
+    box-shadow: inset 5px 5px 2px #00253f, inset -5px -5px 2px #004373;
+    border-color: transparent;
+    margin-top: 15px;
+    border-radius: 5px;
+    height: 40px;
+    width: 250px;
+    font-size: 16px;
+    padding: 15px;
+    color: white;
+    outline: none;
+}
+
+.tableGraph, .tableGraph th, .tableGraph tr {
+    border: 1px solid #266089;
+    border-collapse: collapse;
+}
+
+.tableGraph th {
+    padding: 10px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 16px;
+    background-color: #266089;
+    letter-spacing: 5px;
+}
+
+.tableGraph td {
+    font-size: 18px;
+    padding: 10px;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+/* Set the background color of the date picker */
+.daterangepicker {
+    background-color: #e4f4ff;   
+    color:#003459;
+    border:solid 1px #003459;
+   
+}
+
+    /* Set the text color of the date picker */
+    /*.daterangepicker td, .daterangepicker th, .daterangepicker td.active, .daterangepicker td.active:hover {
+        color: black;*/ /* Set to your desired text color */
+    /*}*/
+    
+
+        /* Set the background color of the selected date range */
+        /*.daterangepicker td.active {
+            background-color: green;*/ /* Set to your desired selected date range background color */
+            /*color: white;*/ /* Set to your desired selected date range text color */
+        /*}*/

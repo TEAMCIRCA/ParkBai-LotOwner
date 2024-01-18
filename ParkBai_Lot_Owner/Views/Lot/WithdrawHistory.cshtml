@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "WithdrawHistory";
+    Layout = "~/Views/Shared/_NavBar.cshtml";
+    var uid = Session["UserId"];
+}
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ParkBai - Parking History</title>
+    <script src="~/Scripts/jquery-3.7.1.min.js"></script>
+    <link href="~/Scripts/CSS/Lot/WithdrawHistory.css" rel="stylesheet" />
+    <script type="module" src="~/Scripts/JS/Lot/WithdrawHistory.js"></script>
+</head>
+<body>
+    <div class="sidebarfloat"></div>
+    <div class="centerdiv">
+
+        <h1>WITHDRAWAL HISTORY</h1>
+        <table id="history" class="parking-table">
+            <thead>
+                <tr>
+                    <th>AMOUNT</th>
+                    <th>REFERENCE NUMBER</th>
+                    <th>REQUEST DATE</th>
+                    <th>REQUEST TIME</th>
+                    <th>RELEASE DATE</th>
+                    <th>REQUEST STATUS</th>
+                    <th>COMMENT</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+        <div id="pagination-container"></div>
+    </div>
+    <script>
+        var uid = @Html.Raw(Json.Encode(uid));
+    </script>
+</body>
+

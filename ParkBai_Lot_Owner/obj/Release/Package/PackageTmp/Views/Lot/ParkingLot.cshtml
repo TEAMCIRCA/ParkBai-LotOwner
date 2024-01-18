@@ -1,0 +1,43 @@
+﻿    
+@{
+    ViewBag.Title = "ParkingLot";
+    Layout = "~/Views/Shared/_NavBar.cshtml";
+    var uid = Session["UserId"];
+}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ParkBai - Parking Lot</title>
+    @*<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">*@
+    <link href="~/Scripts/CSS/Lot/ParkingLot.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.7.1.min.js"></script>
+    <script type="module" src="~/Scripts/JS/Lot/ParkingLot.js"></script>
+</head>
+<body>
+    <div class="sidebarfloat"></div>
+    <div class="centerdiv">
+        <h1>PARKING LOT</h1>
+        <div class="fee">
+            <label id="FeeLBL">INITIAL FEE: ₱ </label>
+            <label id="Fee_per3Hr" class="editable-textbox" contenteditable="false">Loading...</label>
+        </div>
+        <div class="fee">
+            <label id="FeeLBL">OVERNIGHT FEE: ₱ </label>
+            <label id="penalty" class="editable-textbox" contenteditable="false">Loading...</label>
+        </div>
+        <div class="fee">
+            <label id="FeeLBL">SUCCEEDING HOURS: ₱ </label>
+            <label id="succeedingHr" class="editable-textbox" contenteditable="false">Loading...</label>
+        </div>
+        <div id="update" class="button-like">EDIT</div>
+        <div id="parking-slots-container"></div>
+    </div>
+
+    <script>
+        var uid = @Html.Raw(Json.Encode(uid));
+    </script>
+</body>
+</html>

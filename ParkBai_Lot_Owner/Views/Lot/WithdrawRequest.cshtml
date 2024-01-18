@@ -1,0 +1,70 @@
+﻿
+@{
+    ViewBag.Title = "WithdrawRequest";
+    Layout = "~/Views/Shared/_NavBar.cshtml";
+    var uid = Session["UserId"];
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ParkBai - Withdraw Request</title>
+    <link href="~/Scripts/CSS/Lot/WithdrawRequest.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.7.1.min.js"></script>
+    <script type="module" src="~/Scripts/JS/Lot/WithdrawRequest.js"></script>
+</head>
+<body>
+
+    <div class="container">
+        <div class="card">
+            <form action="#" method="POST">
+                <h2>WITHDRAW</h2>
+                <br />
+                <label class="txtLabel">CURRENT BALANCE</label>
+                <input type="text" id="currentBalance" value="" class="balbox" />
+                @*<h3>CURRENT BALANCE: <span id="currentBalance">Loading...</span></h3>*@
+                <br /><br />
+                <label class="lbl">ENTER AMOUNT TO WITHDRAW:</label>
+                <input type="text" id="amount" name="amount" class="reqbox" required><br>
+
+
+                <input type="button" value="Submit" id="submitBtn">
+            </form>
+            <button class="btnHist" id="btnHistory"> HISTORY</button>
+        </div>
+
+
+
+        <div class="card">
+            <h2>WITHDRAWAL REQUESTS</h2>
+            <!-- Area to display withdrawal requests -->
+            <div id="withdrawalRequests">
+                <!-- Withdrawal requests will be displayed here -->
+            </div>
+            <!-- Pagination section -->
+            <div id="pagination" class="pagination"></div>
+        </div>
+
+        <div class="popup" id="popupCheck">
+            <img id="popCheck" src="" loading="lazy" />
+            <h2>Congratulations!</h2>
+            <p>Withdraw request has been submitted.</p>
+            <button type="button" id="popCloseSuccess">OK</button>
+        </div>
+        <div class="popup" id="popupWrong">
+            <img id="popWrong" src="" loading="lazy" />
+            <h2>Sorry!</h2>
+            <p id="popMess" value=""></p>
+            <button type="button" id="popClose">OK</button>
+        </div>
+    </div>
+
+
+    <script>
+        var uid = @Html.Raw(Json.Encode(uid));
+    </script>
+</body>
+</html>
+
+

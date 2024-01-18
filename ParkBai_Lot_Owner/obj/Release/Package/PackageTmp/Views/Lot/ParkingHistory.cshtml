@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewBag.Title = "ParkingHistory";
+    Layout = "~/Views/Shared/_NavBar.cshtml";
+    var uid = Session["UserId"];
+}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ParkBai - Parking History</title>
+    <link href="~/Scripts/CSS/Lot/ParkingHistory.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.7.1.min.js"></script>
+    <script type="module" src="~/Scripts/JS/Lot/ParkingHistory.js"></script>
+</head>
+<body>
+    <div class="sidebarfloat"></div>
+    <div class="centerdiv">
+        <h1>PARKING HISTORY</h1>
+        @*<div class="search-container">*@
+            <label for="plateNumber">License Plate Number:</label>
+            <input type="text" id="plateNumber">
+            <label for="datePicker">Select Date:</label>
+            <input type="date" id="datePicker">
+
+            <button id="searchButton">Search</button>
+            <button id="resetButton">Reset</button>
+        @*</div>*@
+
+        <table id="history" class="parking-table">
+            <thead>
+                <tr>
+                    <th>DATE</th>
+                    <th>REFERENCE NUMBER</th>
+                    <th>PLATE NUMBER</th>
+                    <th>VIEW</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+
+        <div id="pagination" class="pagination-container">
+            <button id="prevPage">Previous Page</button>
+            <button id="nextPage">Next Page</button>
+        </div>
+    </div>
+    <script>
+        var uid = @Html.Raw(Json.Encode(uid));
+    </script>
+</body>
+</html>
+
