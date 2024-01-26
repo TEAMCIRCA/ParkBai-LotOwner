@@ -103,3 +103,42 @@ button {
     color: #e2c946;
     font-weight: 500;
 }
+
+table {
+    margin-top: 20px;
+    width: 100%;
+    table-layout: fixed;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    text-align: center;
+}
+
+tr:nth-child(even) {
+    background-color: white;
+}
+
+tr:nth-child(odd) {
+    background-color: #FDFD96;
+}
+
+table, th, tr {
+    border: 1px solid #266089;
+    border-collapse: collapse;
+}
+
+th {
+    padding: 10px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 16px;
+    background-color: #266089;
+    letter-spacing: 5px;
+}
+
+td {
+    font-size: 18px;
+    padding: 10px;
+    font-weight: 400;
+    text-transform: uppercase;
+    color: black;
+    font-weight: 500;
+}
