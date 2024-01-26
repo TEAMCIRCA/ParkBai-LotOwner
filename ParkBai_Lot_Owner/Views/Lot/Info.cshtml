@@ -28,7 +28,7 @@
 
                 <div class="label-container">
                     <label id="TimeIn">TIME IN:</label>
-                    <label id="Time_In" class="lblyellow" >Loading...</label>
+                    <label id="Time_In" class="lblyellow">Loading...</label>
                 </div>
 
                 <div class="label-container">
@@ -45,32 +45,25 @@
                     <label id="Driver Name">DRIVER NAME: </label>
                     <label id="driver_name" class="lblyellow">Loading...</label>
                 </div>
+
+                <div class="label-container">
+                    <label id="Driver License">LICENSE NUMBER: </label>
+                    <label id="driver_license" class="lblyellow">Loading...</label>
+                </div>
             </div>
 
             <div id="vehicle">
-                <div id="vehicleheader">
-                    <img id="imageElement2" alt="Vehicle Image">
-                </div>
-
-                <div class="label-container">
-                    <label id="Plate_Number">PLATE NUMBER: </label>
-                    <label id="plate_number" class="lblyellow">Loading...</label>
-                </div>
-
-                <div class="label-container">
-                    <label id="Vehicle_Type">VEHICLE TYPE: </label>
-                    <label id="vehicle_type" class="lblyellow">Loading...</label>
-                </div>
-
-                <div class="label-container">
-                    <label id="Vehicle_Color">VEHICLE COLOR: </label>
-                    <label id="vehicle_color" class="lblyellow">Loading...</label>
-                </div>
-
-                <div class="label-container">
-                    <label id="Vehicle_Brand">VEHICLE BRAND: </label>
-                    <label id="vehicle_brand" class="lblyellow">Loading...</label>
-                </div>
+                <table id="vehicleTable">
+                    <thead>
+                        <tr>
+                            <th>Plate Number</th>
+                            <th>Brand</th>
+                            <th>Color</th>
+                            <th>Model</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
             </div>
         </div>
         <button id="backButton">GO BACK</button>

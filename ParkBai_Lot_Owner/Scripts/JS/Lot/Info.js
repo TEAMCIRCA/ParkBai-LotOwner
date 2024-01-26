@@ -15,7 +15,6 @@ $(function () {
     const db = getDatabase(app);
     const key = localStorage.getItem('key');
     var UID = uid;
-
     const InfoRef = ref(db, `/PARK_OWNER/${UID}/PARKING_HISTORY/${key}`);
     onValue(InfoRef, (snapshot) => {
         const parkingData = snapshot.val();
@@ -40,20 +39,17 @@ $(function () {
             .catch((error) => {
                 console.error(error);
             });
-        getCarImg(parkingData.user_uid, parkingData.platenumber)
-            .then((VehicleImage) => {
-                var img = document.getElementById("imageElement2");
-                img.src = VehicleImage;
+        getLicense(parkingData.user_uid)
+            .then((driver_license) => {
+                $("#driver_license").text(driver_license || "Loading...");
             })
             .catch((error) => {
                 console.error(error);
             });
-        getCarDetails(parkingData.user_uid, parkingData.platenumber);
+        getCarDetails(parkingData.user_uid)
         $("#Time_In").text(parkingData.time_in || "Loading...");
         $("#Time_Out").text(parkingData.time_out || "Loading...");
         $("#db_park_id").text(parkingData.ref_number || "Loading...");
-        $("#db_park_id").text(parkingData.ref_number || "Loading...");
-        $("#plate_number").text(parkingData.platenumber || "Loading...");
     }
 
     function getName(uid) {
@@ -64,6 +60,23 @@ $(function () {
                     const driverData = snapshot.val();
                     const driver_name = toSentenceCase(driverData.firstname) + ' ' + toSentenceCase(driverData.middlename) + ' ' + toSentenceCase(driverData.lastname);
                     resolve(driver_name);
+                } else {
+                    reject("Data not found at the specified path.");
+                }
+            }, (error) => {
+                reject("Error fetching Driver data: " + error.message);
+            });
+        });
+    }
+
+    function getLicense(uid) {
+        return new Promise((resolve, reject) => {
+            const DriverRef = ref(db, `/DRIVER/${uid}/ACCOUNT`);
+            onValue(DriverRef, (snapshot) => {
+                if (snapshot.exists()) {
+                    const driverData = snapshot.val();
+                    const driver_license = driverData.license;
+                    resolve(driver_license);
                 } else {
                     reject("Data not found at the specified path.");
                 }
@@ -91,34 +104,43 @@ $(function () {
         });
     }
 
-    function getCarImg(uid, platenumber) {
+    function getCarDetails(uid) {
+        var table = $("#vehicleTable");
+        var tbody = table.find("tbody");
+        tbody.empty();
+
+        getPlates(uid)
+            .then((data) => {
+                for (const key in data) {
+                    const Vehicle = data[key];
+                    const newRow = $("<tr>");
+                    newRow.append($("<td>").text(Vehicle.platenumber));
+                    newRow.append($("<td>").text(Vehicle.brand));
+                    newRow.append($("<td>").text(Vehicle.color));
+                    newRow.append($("<td>").text(Vehicle.model));
+                    tbody.append(newRow);
+                }
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    }
+
+    function getPlates(uid) {
         return new Promise((resolve, reject) => {
-            const VehicleRef = ref(db, `/DRIVER/${uid}/VEHICLE/${platenumber}`);
+            const VehicleRef = ref(db, `/DRIVER/${uid}/VEHICLE/`);
+            var driverData;
 
             onValue(VehicleRef, (snapshot) => {
                 if (snapshot.exists()) {
-                    const VehicleData = snapshot.val();
-                    const VehicleImage = VehicleData.vehicleImage;
-                    resolve(VehicleImage);
+                    driverData = snapshot.val();
+                    resolve(driverData);
                 } else {
                     reject("Data not found at the specified path.");
                 }
             }, (error) => {
                 reject("Error fetching Driver data: " + error.message);
             });
-        });
-    }
-
-    function getCarDetails(uid, platenumber) {
-        const VehicleRef = ref(db, `/DRIVER/${uid}/VEHICLE/${platenumber}`);
-        onValue(VehicleRef, (snapshot) => {
-            const VehicleData = snapshot.val();
-            if (VehicleData) {
-                $("#vehicle_type").text(VehicleData.type || "Loading...");
-                $("#vehicle_color").text(VehicleData.color || "Loading...");
-                $("#vehicle_brand").text(VehicleData.brand || "Loading...");
-                $("#vehicle_model").text(VehicleData.model || "Loading...");
-            }
         });
     }
 

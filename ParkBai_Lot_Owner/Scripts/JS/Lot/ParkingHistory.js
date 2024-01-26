@@ -29,12 +29,13 @@ $(function () {
             if (parkingData) {
                 filteredData = { ...parkingData };
                 createTable(1);
+                console.log(filteredData);
             }
         });
     }
 
     $("#searchButton").on("click", function () {
-        const plateNumber = $("#plateNumber").val().toUpperCase().trim();
+        const license = $("#license").val().toUpperCase().trim();
         const selectedDate = $("#datePicker").val();
         const formattedDate = formatSelectedDate(selectedDate);
 
@@ -43,11 +44,11 @@ $(function () {
             get(HistRef).then((snapshot) => {
                 parkingData = snapshot.val();
                 if (parkingData) {
-                    filteredData = filterPlate(parkingData, plateNumber);
+                    filteredData = filterPlate(parkingData, license);
                     createTable(1);
                 }
             });
-        } else if (plateNumber == "") {
+        } else if (license == "") {
             console.log("filterDate");
             get(HistRef).then((snapshot) => {
                 parkingData = snapshot.val();
@@ -57,25 +58,25 @@ $(function () {
                     createTable(1);
                 }
             });
-        } else if (plateNumber != "" && selectedDate != "") {
+        } else if (license != "" && selectedDate != "") {
             console.log("both");
             get(HistRef).then((snapshot) => {
                 parkingData = snapshot.val();
                 if (parkingData) {
-                    filteredData = filterAll(parkingData, plateNumber, formattedDate);
+                    filteredData = filterAll(parkingData, license, formattedDate);
                     createTable(1);
                 }
             });
         } else {
             console.log('Invalid Date');
         }
-        $("#plateNumber").val("");
+        $("#license").val("");
         $("#datePicker").val("");
     });
 
 
     $("#resetButton").on("click", function () {
-        $("#plateNumber").val("");
+        $("#license").val("");
         $("#datePicker").val("");
         if (parkingData) {
             filteredData = { ...parkingData };
@@ -83,12 +84,12 @@ $(function () {
         }
     });
 
-    function filterAll(data, plateNumber, date) {
+    function filterAll(data, license, date) {
         const filteredData = {};
         for (const key in data) {
             if (data.hasOwnProperty(key)) {
                 const parkingSlot = data[key];
-                const matchesPlate = !plateNumber || parkingSlot.platenumber === plateNumber;
+                const matchesPlate = !license || parkingSlot.driverLicense === license;
                 const matchesDate = !date || dateMatches(parkingSlot.date, date);
                 if (matchesPlate && matchesDate) {
                     filteredData[key] = parkingSlot;
@@ -98,18 +99,19 @@ $(function () {
         return filteredData;
     }
 
-    function filterPlate(data, plateNumber) {
+    function filterPlate(data, license) {
         const filteredData = {};
         for (const key in data) {
             if (data.hasOwnProperty(key)) {
                 const parkingSlot = data[key];
-                const matchesPlate = !plateNumber || parkingSlot.platenumber === plateNumber;
+                const matchesPlate = !license || parkingSlot.driverLicense === license;
                 if (matchesPlate) {
                     filteredData[key] = parkingSlot;
                 }
             }
         }
         return filteredData;
+        console.log()
     }
 
     function filterDate(data, date) {
@@ -171,7 +173,7 @@ $(function () {
             var newRow = $("<tr>");
             newRow.append($("<td>").text(parkingSlot.date));
             newRow.append($("<td>").text(parkingSlot.ref_number));  
-            newRow.append($("<td>").text(parkingSlot.platenumber));
+            newRow.append($("<td>").text(parkingSlot.driverLicense));
             var buttonColumn = $("<td>");
             var button = $("<button>").text("View");
             button.data('key', key);
